@@ -1,0 +1,38 @@
+* Dependencies
+- emacs version 29 or higher
+- exiftool
+
+* Archive Database and Catalogue of Works
+
+** Schema of Database
+: CREATE TABLE documents (url text, artwork_ids text, keywords text);
+: CREATE TABLE artwork(uid text, title text, date text, dimensions text, media text, description text, notes text, keywords text);
+
+** Catalogue of Works
+
+After making changes to the catalogue, use this function to update the
+information in the database:
+
+: (bsarchive-slurp-artwork-catalogue)
+
+Use this to add a new blank entry to the catalogue:
+
+: (bsarchive-create-new-catalogue-entry)
+
+* JOBS TO DO
+** check whether file is already in archive
+Do this properly:
+- check url
+- check hash/checksum
+** display all info on a file
+** display all info on a group of files
+** edit archive entry for single file
+** edit archive entry for group of files
+** select artwork IDs & keywords from completion list
+** scan database for bad entries
+- image file does not have archive uid stored in exif
+** all file urls are relative to home dir ~/
+** create-new-catalogue-entry --> choose existing entry as template
+** COMPLETION LISTS or TAG CLOUDS for keyword entry
+** KEYWORD GROUPS
+groups which capture a whole group of keywords - saves pain of input - adds consistency
